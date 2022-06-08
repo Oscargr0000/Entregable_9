@@ -5,67 +5,103 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject[] Canvas;
 
-    public GameObject Inicio;
-    public GameObject Opciones;
-    public GameObject WindowsWP;
-    public GameObject CatsWP;
-    public GameObject MoreCatsWP;
+    public Slider SliderVolum;
+    public Slider CatsNum;
+    public GameObject[] CatsImg;
+    public Image[] ColorCats;
+    public Color PickColor;
+    public AudioSource AS;
+    public float VolumValue;
 
-    public GameObject ToggleCats;
+    bool blue = false;
+    bool red = false;
+    bool green = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Inicio.SetActive(true);
-        Opciones.SetActive(false);
-        
-        
+        Canvas[0].SetActive(true);
+        Canvas[1].SetActive(false);
+
+        CatsImg[0].SetActive(false);
+        CatsImg[1].SetActive(false);
+        CatsImg[2].SetActive(false);
+        CatsImg[3].SetActive(false);
+        CatsImg[4].SetActive(false);
+
+        CatsImg[0].GetComponent<Image>();
+
+        SliderVolum.value = 0.5f;
+        AS.volume = SliderVolum.value;
+        PickColor.a = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void ChangeSlider(float Valor)
     {
-        
+        SliderVolum.value = Valor;
+        AS.volume = SliderVolum.value;
     }
 
     public void Options()
     {
-        Opciones.SetActive(true);
-        Inicio.SetActive(false);
+        Canvas[1].SetActive(true);
+        Canvas[0].SetActive(false);
 
+        CatsImg[0].SetActive(false);
+        CatsImg[1].SetActive(false);
+        CatsImg[2].SetActive(false);
+        CatsImg[3].SetActive(false);
+        CatsImg[4].SetActive(false);
+
+        
     }
 
     public void Windows()
     {
-        Inicio.SetActive(true);
-        Opciones.SetActive(false);
+        float Cats = CatsNum.value;
+
+        for (int i = 0; i <= Cats; i++)
+        {
+            CatsImg[i].SetActive(true);
+
+            if (green)
+            {
+                ColorCats[i].color = Color.green;
+            }
+            else if(blue)
+            {
+                ColorCats[i].color = Color.blue;
+            }else if(red)
+            {
+                ColorCats[i].color = Color.red;
+            }
+        }
         
+
+        Canvas[0].SetActive(true);
+        Canvas[1].SetActive(false);
     }
 
-    public void WindowsXpWP()
+    public void Gr()
     {
-        WindowsWP.SetActive(true);
-        CatsWP.SetActive(false);
-        MoreCatsWP.SetActive(false);
+        green = true;
+        blue = false;
+        red = false;
     }
 
-    public void Cats()
+    public void Bl()
     {
-        WindowsWP.SetActive(false);
-        CatsWP.SetActive(true);
-        MoreCatsWP.SetActive(false);
+        green = false;
+        blue = true;
+        red = false;
     }
-
-    public void MoreCats()
+    public void Re()
     {
-        WindowsWP.SetActive(false);
-        CatsWP.SetActive(false);
-        MoreCatsWP.SetActive(true);
-    }
-
-    public void Toggle(bool tog)
-    {
-        print(tog);
+        green = false;
+        blue = false;
+        red = true;
     }
 }
