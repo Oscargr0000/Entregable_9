@@ -10,6 +10,9 @@ public class MenuManager : MonoBehaviour
     public Slider SliderVolum;
     public Slider CatsNum;
     public GameObject[] CatsImg;
+
+    public Image[] ColorsBotton;
+    private Color COLOR;
     public Image[] ColorCats;
     public Color PickColor;
     public AudioSource AS;
@@ -55,8 +58,6 @@ public class MenuManager : MonoBehaviour
         CatsImg[2].SetActive(false);
         CatsImg[3].SetActive(false);
         CatsImg[4].SetActive(false);
-
-        
     }
 
     public void Windows()
@@ -67,17 +68,19 @@ public class MenuManager : MonoBehaviour
         {
             CatsImg[i].SetActive(true);
 
-            if (green)
-            {
-                ColorCats[i].color = Color.green;
-            }
-            else if(blue)
-            {
-                ColorCats[i].color = Color.blue;
-            }else if(red)
-            {
-                ColorCats[i].color = Color.red;
-            }
+            ColorCats[i].color = COLOR;
+
+            //if (green)
+            //{
+                
+            //}
+            //else if(blue)
+            //{
+            //    ColorCats[i].color = Color.blue;
+            //}else if(red)
+            //{
+            //    ColorCats[i].color = Color.red;
+            //}
         }
         
 
@@ -87,21 +90,24 @@ public class MenuManager : MonoBehaviour
 
     public void Gr()
     {
-        green = true;
-        blue = false;
-        red = false;
+        COLOR = ColorsBotton[0].color;
+        //green = true;
+        //blue = false;
+        //red = false;
     }
 
     public void Bl()
     {
-        green = false;
-        blue = true;
-        red = false;
+        COLOR = ColorsBotton[1].color;
+        //green = false;
+        //blue = true;
+        //red = false;
     }
     public void Re()
     {
-        green = false;
-        blue = false;
-        red = true;
+        COLOR = ColorsBotton[2].color;
+        //green = false;
+        //blue = false;
+        //red = true;
     }
 }

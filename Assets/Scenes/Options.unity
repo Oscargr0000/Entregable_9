@@ -813,6 +813,10 @@ MonoBehaviour:
   - {fileID: 683552176}
   - {fileID: 325963867}
   - {fileID: 1090977583}
+  ColorsBotton:
+  - {fileID: 1719117927}
+  - {fileID: 936775639}
+  - {fileID: 941071130}
   ColorCats:
   - {fileID: 1532648995}
   - {fileID: 532325230}
